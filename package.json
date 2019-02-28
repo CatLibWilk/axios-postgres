@@ -22,6 +22,7 @@
     "express": "^4.16.4",
     "pg": "^7.8.1",
     "pg-hstore": "^2.3.2",
+    "prompts": "^2.0.3",
     "sequelize": "^4.42.1",
     "sequelize-cli": "^5.4.0"
   },
