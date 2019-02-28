@@ -5,6 +5,7 @@ Application that pulls data, processes and saves to remote postgresql database
 To facilitate database connection, a config folder with config.json file must be created (They have been removed from the repo to hide password/host info).
 
 In this file include:
+<pre><code>
 {
   "development": {
     "username": "postgres",
@@ -31,3 +32,4 @@ In this file include:
     "dialect": "postgres"
   }
 }
+</pre></code>
