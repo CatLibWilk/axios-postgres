@@ -1,6 +1,7 @@
 const prompts = require('prompts')
 const dbController = require('./dbController.js')
 
+
 module.exports = {
     test: function(){
         let interval
@@ -14,13 +15,10 @@ module.exports = {
                 }
             ];
         
-            const answers = await prompts(questions, {onCancel:cleanup, onSubmit:cleanup});
-            try {
-                answers.start ? module.exports.retrieve() : ''
-            }
-            catch(err){
-                err ? (console.log('retrieve function not called'), module.exports.test()) : ''
-            }
+            const answer = await prompts(questions, {onCancel:cleanup, onSubmit:cleanup});
+           
+                answer.start ? module.exports.retrieve() : ''
+            
         })();
         
         function cleanup() {
@@ -29,9 +27,11 @@ module.exports = {
     },
 
     retrieve: function(){
+        console.log("retrieve function called")
+        // 'ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt'
+        
 
-
-        // dbController.test()
+        dbController.test()
     }
 }
 //testing without starting app each time
