@@ -1,6 +1,6 @@
 const prompts = require('prompts')
 const dbController = require('./dbController.js')
-
+const axios = require('axios');
 
 module.exports = {
     test: function(){
@@ -28,7 +28,11 @@ module.exports = {
 
     retrieve: function(){
         console.log("retrieve function called")
-        // 'ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt'
+        // 'https://www.ebi.ac.uk/gwas/api/search/downloads/studies'
+        axios.get('https://www.ebi.ac.uk/gwas/api/search/downloads/studies')
+                .then(response => {
+                    console.log('data recieved')
+                })
         
 
         dbController.test()
