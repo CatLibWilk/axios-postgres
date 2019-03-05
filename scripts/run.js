@@ -1,6 +1,8 @@
 const prompts = require('prompts')
 const dbController = require('./dbController.js')
 const axios = require('axios');
+const fs = require('fs')
+const datetime = new Date().getTime()
 
 module.exports = {
     test: function(){
@@ -31,7 +33,11 @@ module.exports = {
         // 'https://www.ebi.ac.uk/gwas/api/search/downloads/studies'
         axios.get('https://www.ebi.ac.uk/gwas/api/search/downloads/studies')
                 .then(response => {
-                    console.log('data recieved')
+                    // console.log(response.data)
+                    fs.writeFile(`${__dirname}/../logs/reponse-save-${datetime}.txt`, response.data, function(err){
+                        if (err) throw err;
+                        console.log('New logfile saved')
+                    })
                 })
         
 
@@ -40,3 +46,4 @@ module.exports = {
 }
 //testing without starting app each time
 module.exports.test()
+
