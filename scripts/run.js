@@ -1,5 +1,6 @@
 const prompts = require('prompts')
 const dbController = require('./dbController.js')
+const process = require('./process');
 const axios = require('axios');
 const fs = require('fs')
 const datetime = new Date().getTime()
@@ -19,7 +20,8 @@ module.exports = {
         
             const answer = await prompts(questions, {onCancel:cleanup, onSubmit:cleanup});
            
-                answer.start ? module.exports.retrieve() : ''
+                // answer.start ? module.exports.retrieveAndLog() : ''
+                answer.start ? module.exports.retrieveAndSave() : ''
             
         })();
         
@@ -28,7 +30,20 @@ module.exports = {
         }
     },
 
-    retrieve: function(){
+    retrieveAndSave: function(){
+        console.log("retrieve function called")
+        // 'https://www.ebi.ac.uk/gwas/api/search/downloads/studies'
+        axios.get('https://www.ebi.ac.uk/gwas/api/search/downloads/studies')
+                .then(response => {
+                    // console.log(response.data)
+                    process.process(response.data, function(cb){
+                        dbController.save(cb)
+                    });
+                });
+
+    },
+
+    retrieveAndLog: function(){
         console.log("retrieve function called")
         // 'https://www.ebi.ac.uk/gwas/api/search/downloads/studies'
         axios.get('https://www.ebi.ac.uk/gwas/api/search/downloads/studies')
@@ -40,8 +55,6 @@ module.exports = {
                     })
                 })
         
-
-        dbController.test()
     }
 }
 //testing without starting app each time
