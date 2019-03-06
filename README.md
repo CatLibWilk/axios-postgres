@@ -1,4 +1,4 @@
-# Axios-postgres
+# axios-postgres
 Application that pulls list of cataloged studies from The NHGRI-EBI Catalog of published genome-wide association studies, processes and saves to remote postgresql database
 
 # Database Setup
