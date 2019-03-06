@@ -49,7 +49,7 @@ module.exports = {
         axios.get('https://www.ebi.ac.uk/gwas/api/search/downloads/studies')
                 .then(response => {
                     // console.log(response.data)
-                    fs.writeFile(`${__dirname}/../logs/reponse-save-${datetime}.txt`, response.data, function(err){
+                    fs.writeFile(`${__dirname}/../logs/response-save-${datetime}.txt`, response.data, function(err){
                         if (err) throw err;
                         console.log('New logfile saved')
                     })
