@@ -58,5 +58,5 @@ module.exports = {
     }
 }
 //testing without starting app each time
-module.exports.test()
+// module.exports.test()
 
