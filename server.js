@@ -11,5 +11,5 @@ var syncOptions = { force: false };
 
 db.sequelize.sync(syncOptions).then(function() {
     console.log('database connected, will now call other utility')
-    scripts.test();
+    scripts.startRetrieve();
 });

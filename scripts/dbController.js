@@ -7,7 +7,24 @@ module.exports = {
     },
 
     save: function(data){
-        console.log(data)
+
+        // console.log(data)
+            db.Entry.create({
+                date_added: data[0],
+                pubmedid: data[1],
+                first_author: data[2],
+                pub_date: data[3],
+                journal: data[4],
+                link: data[5],
+                study_title: data[6],
+                disease_trait: data[7],
+                sample_size_desc: data[8],
+                replication_sample_size_desc: data[9],
+                platform: data[10],
+                assoc_count: data[11], 
+                createdAt: data[12],
+                updatedAt: data[13]
+            })
     },
 
     saveFromLog: function(){
@@ -42,4 +59,4 @@ module.exports = {
 }
 
 //for testing without server start
-module.exports.saveFromLog();
+// module.exports.saveFromLog();

@@ -6,7 +6,7 @@ const fs = require('fs')
 const datetime = new Date().getTime()
 
 module.exports = {
-    test: function(){
+    startRetrieve: function(){
         let interval
         (async function(){
             const questions = [
@@ -35,7 +35,6 @@ module.exports = {
         // 'https://www.ebi.ac.uk/gwas/api/search/downloads/studies'
         axios.get('https://www.ebi.ac.uk/gwas/api/search/downloads/studies')
                 .then(response => {
-                    // console.log(response.data)
                     process.process(response.data, function(cb){
                         dbController.save(cb)
                     });

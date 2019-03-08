@@ -1,63 +1,68 @@
 module.exports = function(sequelize, DataTypes){
     
     const Entry = sequelize.define('Entry', {
+        id:{
+            type:DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+
         date_added: {
-            type: DataTypes.DATE
+            type: DataTypes.STRING
         },
 
         pubmedid: {
-            primaryKey: true,
             type: DataTypes.INTEGER
           },
 
         first_author: {
             type: DataTypes.STRING,
-            allowNull: false
+            // allowNull: false
         },
 
         pub_date: {
-            type: DataTypes.DATE,
-            allowNull: false
+            type: DataTypes.STRING,
+            // allowNull: false
         },
 
         journal: {
             type: DataTypes.STRING,
-            allowNull: false
+            // allowNull: false
         },
 
         link: {
             type: DataTypes.STRING,
-            allowNull: false
+            // allowNull: false
         },
 
         study_title: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.TEXT,
+            // allowNull: false
         },
 
         disease_trait: {
             type: DataTypes.STRING,
-            allowNull: false
+            // allowNull: false
         },
 
         sample_size_desc: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.TEXT,
+            // allowNull: false
         },
 
         replication_sample_size_desc: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.TEXT,
+            // allowNull: false
         },
 
         platform: {
             type: DataTypes.STRING,
-            allowNull: false
+            // allowNull: false
         },
 
         assoc_count: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            // allowNull: false
         },
     });
     
