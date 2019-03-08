@@ -6,7 +6,9 @@ clone the repository:
 git clone https://github.com/CatLibWilk/axios-postgres.git
 
 run installation:
+
 cd axios-postgres
+
 npm install
 
 
