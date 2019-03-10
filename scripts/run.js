@@ -6,7 +6,7 @@ const fs = require('fs')
 const datetime = new Date().getTime()
 
 module.exports = {
-    startRetrieve: function(){
+    startRetrieve: function(cb){
         let interval
         (async function(){
             const questions = [
@@ -21,7 +21,9 @@ module.exports = {
             const answer = await prompts(questions, {onCancel:cleanup, onSubmit:cleanup});
            
                 // answer.start ? module.exports.retrieveAndLog() : ''
-                answer.start ? module.exports.retrieveAndSave() : ''
+                answer.start ? module.exports.retrieveAndSave(function(){
+                    cb()
+                }) : ''
             
         })();
         
@@ -30,13 +32,13 @@ module.exports = {
         }
     },
 
-    retrieveAndSave: function(){
+    retrieveAndSave: function(cb){
         console.log("retrieve function called")
         // 'https://www.ebi.ac.uk/gwas/api/search/downloads/studies'
         axios.get('https://www.ebi.ac.uk/gwas/api/search/downloads/studies')
                 .then(response => {
-                    process.process(response.data, function(cb){
-                        dbController.save(cb)
+                    process.process(response.data, function(){
+                        cb()
                     });
                 });
 

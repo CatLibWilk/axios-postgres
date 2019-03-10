@@ -6,7 +6,7 @@ module.exports = {
         console.log('dbController function reached')
     },
 
-    save: function(data){
+    save: function(data, cb){
 
         // console.log(data)
             db.Entry.create({
@@ -24,6 +24,8 @@ module.exports = {
                 assoc_count: data[11], 
                 createdAt: data[12],
                 updatedAt: data[13]
+            }).then(() => {
+                cb()
             })
     },
 
