@@ -12,8 +12,9 @@ module.exports = {
             })
         }
 
-   
-
+        
+        console.log(array.length-1)
+        console.log(complete)
         complete === array.length-1 ? cb() : '';
 
     }
