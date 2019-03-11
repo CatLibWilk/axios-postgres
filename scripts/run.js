@@ -38,6 +38,7 @@ module.exports = {
         axios.get('https://www.ebi.ac.uk/gwas/api/search/downloads/studies')
                 .then(response => {
                     process.process(response.data, function(){
+                        console.log('callback in run.js')
                         cb()
                     });
                 });

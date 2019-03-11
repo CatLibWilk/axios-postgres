@@ -12,9 +12,9 @@ var syncOptions = { force: false };
 
 db.sequelize.sync(syncOptions).then(function() {
     console.log('database connected, will now call other utility')
-    run.startRetrieve(function(cb){
+    run.startRetrieve(function(){
         console.log("Resources retrieved and stored successfully")
-        run.startRetrieve()
+        // run.startRetrieve()
     });
 });
 
