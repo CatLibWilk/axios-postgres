@@ -23,13 +23,26 @@ module.exports = {
                 // answer.start ? module.exports.retrieveAndLog() : ''
                 answer.start ? module.exports.retrieveAndSave(function(){
                     cb()
-                }) : ''
+                }) : (async function(){
+                    const endQ = [{
+                        type: 'confirm',
+                        name: 'end',
+                        message: 'End program?'
+                    }];
+                    const endAnswer = await prompts(endQ, {onCancel:cleanup, onSubmit:cleanup});
+                    endAnswer.end ? module.exports.exitProgram(0): '';
+                })();
             
         })();
         
         function cleanup() {
             clearInterval(interval);
         }
+    },
+    
+    exitProgram: function(){
+        console.log('Goodbye!')
+        process.exit(0)
     },
 
     retrieveAndSave: function(cb){
