@@ -14,7 +14,14 @@ db.sequelize.sync(syncOptions).then(function() {
     console.log('database connected, will now call other utility')
     run.startRetrieve(function(){
         console.log("Resources retrieved and stored successfully")
-        run.startRetrieve()
+        setTimeout(endMessage, 2000)
+        function endMessage() {
+            console.log('Program will now end')
+            setTimeout(endProgram, 2000)
+        }
+        function endProgram(){
+            process.exit(0)
+        }
     });
 });
 
