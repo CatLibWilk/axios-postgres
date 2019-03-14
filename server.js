@@ -18,14 +18,17 @@ app.use(express.json());
 
 var syncOptions = { force: false };
 
-
-db.sequelize.sync(syncOptions).then(function() {
-    console.log('database connection')
+const startAndRetrieve = function() {
 
     run.startRetrieve(function(){
         console.log("Resources retrieved and stored successfully")
-        setTimeout(run.startRetrieve, 2000)
-
+        setTimeout(startAndRetrieve, 2000)
+    
     });
+}
+
+db.sequelize.sync(syncOptions).then(function() {
+    console.log('database connection')
+    startAndRetrieve();
 });
 
