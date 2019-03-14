@@ -6,8 +6,11 @@ const db = require('./models')
 //figure out how to eliminate cyclical dependency or just make this less pukey
 module.exports = {
     endProgram: function(){
-        console.log('endprogram called in server.js')
-        process.exit(0)
+        console.log('Program will exit, goodbye!')
+        setTimeout(end, 1500)
+        function end(){
+            process.exit(0)
+        }
     }
 }
 
