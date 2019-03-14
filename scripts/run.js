@@ -1,5 +1,5 @@
 const prompts = require('prompts')
-const dbController = require('./dbController.js')
+const servFile = require('../server.js');
 const process = require('./process');
 const axios = require('axios');
 const fs = require('fs')
@@ -23,7 +23,10 @@ module.exports = {
                 // answer.start ? module.exports.retrieveAndLog() : ''
                 answer.start ? module.exports.retrieveAndSave(function(){
                     cb()
-                }) : ''
+                }) : module.exports.endProgram()
+                ///
+                
+        ///        
         })();
         
         function cleanup() {
@@ -56,7 +59,19 @@ module.exports = {
                     })
                 })
         
+    },
+
+    endProgram: function() {
+        console.log('reached in run.js')
+        try{
+            servFile.endProgram();
+        }
+        catch(err){
+            if (err) throw err;
+            console.log('fuck shit piss')
+        }
     }
+    
 }
 //testing without starting app each time
 // module.exports.test()
