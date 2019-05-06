@@ -6,9 +6,17 @@ import API from './util/API';
 
 
 class App extends Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      
+    };
+  }
   
   componentDidMount(){
-    API.test().then(result => console.log(result));
+    API.get_articles().then(result => console.log(result));
+
   }
 
   render(){

@@ -23,7 +23,7 @@
     "axios": "^0.18.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "pg": "^7.8.1",
+    "pg": "^7.10.0",
     "pg-hstore": "^2.3.2",
     "prompts": "^2.0.3",
     "react": "^16.8.6",
@@ -31,6 +31,7 @@
     "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "nodemon": "^1.18.10"
   }
 }

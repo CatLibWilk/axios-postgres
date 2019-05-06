@@ -36,9 +36,9 @@ const startAndRetrieve = function() {
 
 db.sequelize.sync(syncOptions).then(function() {
     //for initial database load
-    //console.log('database connection')
+   // console.log('database connection')
     //startAndRetrieve();
-    app.listen(PORT, () => {
+   app.listen(PORT, () => {
         console.log(`App listening on Port: ${PORT}`)
     })
 });
