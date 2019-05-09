@@ -15,7 +15,7 @@ module.exports = {
             port: 5432,
           })
           
-          pool.query('SELECT * FROM "Entries"', (err, qres) => {
+          pool.query('SELECT * FROM "Entries" LIMIT 10', (err, qres) => {
             res.send(qres)
             pool.end()
           })
