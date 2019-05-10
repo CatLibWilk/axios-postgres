@@ -5,7 +5,8 @@ class Dropdown extends Component {
     constructor(props){
         super(props)
         this.state = {
-          dropdown_articles: []
+          dropdown_titles: [],
+          article_store: []
         }
     }
 
@@ -19,7 +20,7 @@ class Dropdown extends Component {
                 new_articles.push({id: article.id, title: article.study_title})
               });
 
-              this.setState( {dropdown_articles: new_articles} )
+              this.setState( {dropdown_titles: new_articles, article_store: articles} )
 
             })
     }
@@ -27,10 +28,11 @@ class Dropdown extends Component {
     return (
         <div class={this.props.width ? `col-${this.props.width} mx-auto`: 'col-10 mx-auto'}>
         <label for="exampleFormControlSelect1">Choose a title</label>
-        <select class="form-control" id="exampleFormControlSelect1" >
+        <select class="form-control" id="exampleFormControlSelect1" onChange={ (e) => this.props.function(e, this.state.article_store) }>
           <option >Choose Title</option>
-          {this.state.dropdown_articles.length > 0 ? 
-            this.state.dropdown_articles.map(article => {
+  
+          {this.state.dropdown_titles.length > 0 ? 
+            this.state.dropdown_titles.map(article => {
               return <option id={article.id}>{article.title}</option>
             })
             : ''
